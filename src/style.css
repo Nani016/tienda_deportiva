@@ -1,112 +1,58 @@
-/* General */
-body {
+/* Estructura general */
+.app {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    background-color: #e9dcdc;
+    color: #333;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
 }
 
-/* Formulario */
-.formulario {
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    text-align: center;
-}
-
-.formulario h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.input-group {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.input-group input {
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000;
+    padding: 10px 20px;
+    color: #fff;
     width: 100%;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s;
+    box-sizing: border-box;
 }
 
-.input-group label {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-    pointer-events: none;
-    transition: all 0.3s;
-}
-
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
-    top: -10px;
-    left: 10px;
-    font-size: 12px;
-    color: #333;
-}
-
-.btn {
-    width: 100%;
-    padding: 15px;
-    background-color: #111;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.registrarse {
-    margin-top: 20px;
-}
-
-.registrarse a {
-    color: #111;
+.navbar-izquierda img,
+.navbar-derecha a {
+    margin-right: 15px;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
 }
 
-.registrarse a:hover {
+.navbar-derecha a:hover {
     text-decoration: underline;
 }
 
 /* Catálogo */
 .catalogo {
-    display: none;
-    width: 100%;
     display: flex;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 20px;
+    width: 100vw; /* Ocupa todo el ancho de la pantalla */
 }
 
+/* Sidebar */
 .sidebar {
-    width: 250px;
+    background-color: #f2f2f2;
     padding: 20px;
-    background-color: white;
-    border-right: 1px solid #ddd;
+    border-radius: 10px;
+    width: 20%; /* Ajustar el ancho para ocupar más espacio */
+    box-sizing: border-box;
 }
 
 .sidebar h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .sidebar ul {
@@ -114,24 +60,26 @@ body {
     padding: 0;
 }
 
-.sidebar ul li {
-    padding: 10px 0;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .sidebar ul li a {
+    display: block;
+    color: #333;
     text-decoration: none;
-    color: #000;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    padding: 5px 0;
 }
 
 .sidebar ul li a:hover {
-    color: #777;
+    color: #000;
+    font-weight: 500;
 }
 
+/* Productos */
 .contenido-productos {
-    flex: 1;
+    flex-grow: 1;
     padding: 20px;
+    width: 80%; /* Ajustar el tamaño para aprovechar el espacio */
+    box-sizing: border-box;
 }
 
 .opciones {
@@ -142,112 +90,236 @@ body {
 }
 
 .btn-filtro {
-    background-color: #111;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    padding: 8px 15px;
     cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-filtro:hover {
+    background-color: #333;
 }
 
 .select-ordenar {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 0.9rem;
 }
 
-.productos {
+/* Modal de Login */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-modal h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+/* Estilo de productos */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajuste automático de columnas */
+    gap: 20px;
+    padding: 10px;
 }
 
 .producto {
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-bottom: 20px;
     padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s ease;
+    max-width: 250px;
+    margin: auto;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Más sombra al hacer hover */
 }
 
 .producto img {
-    width: 100%;
-    border-radius: 8px;
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .producto h2 {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 1.1rem;
     margin: 10px 0;
+    color: #333;
 }
 
 .producto p {
-    font-size: 16px;
-    color: #555;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .precio {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
-    margin-top: 10px;
+    color: #000;
 }
 
 .descuento {
     text-decoration: line-through;
-    color: #888;
-    margin-left: 10px;
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-left: 5px;
 }
 
 .producto .btn {
     margin-top: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-.navbar {
-    background-color: #f5f5f5;
-    padding: 10px 20px;
+.producto .btn:hover {
+    background-color: #333;
+}
+
+/* Estilos de la barra de navegación */
+.navbar-derecha {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
 }
 
-.navbar-izquierda img {
-    margin-right: 10px;
-}
-
-.navbar-derecha a {
-    margin-left: 20px;
-    color: #000;
+.navbar-derecha a,
+.usuario {
+    color: #fff;
     text-decoration: none;
-    font-size: 14px;
+    margin-left: 15px;
+    font-size: 1rem;
 }
 
-.navbar-derecha a:hover {
+.usuario {
+    font-weight: bold;
+}
+
+.navbar-derecha a:hover,
+.usuario:hover {
     text-decoration: underline;
 }
 
 
-.filtros details {
-    margin: 10px 0;
-}
-
-.filtros summary {
-    font-weight: bold;
+/* Estilos para el modal de login y registro */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .login-modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 90%;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-}
-
-.filtros ul {
-    margin: 5px 0;
-    padding-left: 15px;
-}
-
-.filtros ul li {
-    list-style: none;
-    margin: 5px 0;
-}
-
-.filtros ul li input {
-    margin-right: 10px;
-}
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .link {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

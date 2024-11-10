@@ -1,11 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app.js'; // El componente principal de tu aplicación
-import './index.css'; // Si tienes un archivo CSS, de lo contrario puedes eliminar esta línea
+import { createRoot } from 'react-dom/client';
+import App from './app.js'; // Asegúrate de que el nombre del archivo sea correcto
+import './index.css'; // Mantén esto si tienes un archivo de estilo global
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// Selecciona el contenedor de montaje por su ID
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error("No se encontró el contenedor de 'root' en el HTML.");
+}
+
