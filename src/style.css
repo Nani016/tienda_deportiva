@@ -148,14 +148,14 @@
 .input-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     font-size: 1rem;
 }
 
 .btn {
     background-color: #000;
-    color: #fff;
+    color: #ffffff;
     padding: 10px;
     border: none;
     font-size: 1rem;
@@ -217,7 +217,7 @@
 
 .descuento {
     text-decoration: line-through;
-    color: #d9534f;
+    color: #666;
     font-size: 0.9rem;
     margin-left: 5px;
 }
@@ -225,7 +225,7 @@
 .producto .btn {
     margin-top: 10px;
     background-color: #000;
-    color: #fff;
+    color: #ffffff;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -246,7 +246,7 @@
 
 .navbar-derecha a,
 .usuario {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     margin-left: 15px;
     font-size: 1rem;
@@ -277,7 +277,7 @@
   }
   
   .login-modal {
-    background: #fff;
+    background: #ffffff;
     padding: 20px;
     border-radius: 8px;
     width: 300px;
@@ -285,7 +285,7 @@
   }
   
   .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
   .input-group label {
@@ -294,24 +294,24 @@
   }
   
   .input-group input {
-    width: 100%;
+    width: 90%;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 10px;
     border: 1px solid #ccc;
   }
   
   .btn {
-    width: 100%;
+    width: 80%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #000305;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid #f2f9fa;
+    border-radius: 10px;
     cursor: pointer;
   }
   
   .btn:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
   }
   
   .link {
@@ -322,4 +322,82 @@
   .link:hover {
     text-decoration: underline;
   }
-  
+
+  /* Banner */
+.banner {
+    background-image: url('https://via.placeholder.com/1200x400'); /* Imagen de banner */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+    width: 95%;
+}
+
+/* Navbar secundaria */
+.navbar-secundaria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 8px 210px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.navbar-secundaria a {
+    margin: 0 15px;
+    color: #010011;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-secundaria a:hover {
+    color: #5414e8;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Botones de búsqueda y tienda */
+.btn-buscar, .btn-tienda {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 15px;
+}
+
+.btn-buscar:hover, .btn-tienda:hover {
+    color: #5414e8;
+}

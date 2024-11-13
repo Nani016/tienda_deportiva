@@ -4,21 +4,22 @@ import './style.css';
 const App = () => {
   const [mostrarCatalogo, setMostrarCatalogo] = useState(true);
   const [mostrarLogin, setMostrarLogin] = useState(false);
-  const [mostrarRegistro, setMostrarRegistro] = useState(false); // Mostrar el formulario de registro
   const [email, setEmail] = useState('');
   const [nombreUsuario, setNombreUsuario] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState(''); // Para la confirmación del password
-  const [esRegistrado, setEsRegistrado] = useState(false); // Para saber si es registro o login
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [nombreCompleto, setNombreCompleto] = useState(''); 
+  const [telefono, setTelefono] = useState(''); 
+  const [direccion, setDireccion] = useState(''); 
+  const [esRegistrado, setEsRegistrado] = useState(false);
 
   const handleMostrarLogin = () => {
     setMostrarLogin(true);
-    setEsRegistrado(true); // Mostrar el formulario de login por defecto
+    setEsRegistrado(true);
   };
 
   const handleCerrarLogin = () => {
     setMostrarLogin(false);
-    setEsRegistrado(true);
   };
 
   const handleLoginSubmit = (e) => {
@@ -30,10 +31,9 @@ const App = () => {
 
   const handleRegistroSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes añadir validaciones más complejas
     const nombre = email.split('@')[0];
     setNombreUsuario(nombre);
-    setMostrarLogin(false); // Cerrar el modal de login después del registro
+    setMostrarLogin(false);
   };
 
   return (
@@ -55,12 +55,70 @@ const App = () => {
         </div>
       </header>
 
+
+      {/* Barra de Navegación Secundaria */}
+      <nav className="navbar-secundaria">
+      <div className="dropdown">
+          <a href="#" className="dropdown-toggle">Novedades</a>
+          <div className="dropdown-menu">
+            <a href="#">Ropa Mujer</a>
+            <a href="#">Calzado Mujer</a>
+            <a href="#">Accesorios Mujer</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <a href="#" className="dropdown-toggle">Hombre</a>
+          <div className="dropdown-menu">
+            <a href="#">Ropa Hombre</a>
+            <a href="#">Calzado Hombre</a>
+            <a href="#">Accesorios Hombre</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <a href="#" className="dropdown-toggle">Mujer</a>
+          <div className="dropdown-menu">
+            <a href="#">Ropa Mujer</a>
+            <a href="#">Calzado Mujer</a>
+            <a href="#">Accesorios Mujer</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <a href="#" className="dropdown-toggle">Niños</a>
+          <div className="dropdown-menu">
+            <a href="#">Ropa Mujer</a>
+            <a href="#">Calzado Mujer</a>
+            <a href="#">Accesorios Mujer</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <a href="#" className="dropdown-toggle">Accesorios</a>
+          <div className="dropdown-menu">
+            <a href="#">Ropa Mujer</a>
+            <a href="#">Calzado Mujer</a>
+            <a href="#">Accesorios Mujer</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <a href="#" className="dropdown-toggle">Descuentos</a>
+          <div className="dropdown-menu">
+            <a href="#">Ropa Mujer</a>
+            <a href="#">Calzado Mujer</a>
+            <a href="#">Accesorios Mujer</a>
+          </div>
+        </div>
+        <button className="btn-buscar">🔍</button>
+        <button className="btn-tienda">🛒</button>
+      </nav>
+
       <div className="bienvenida">
         <h1>Bienvenido a nuestra tienda</h1>
-        <p>Compra los productos más exclusivos de Nike y Jordan.</p>
+        <p>Compra los productos más exclusivos de la ChaveStore</p>
       </div>
 
-      {/* Formulario de inicio de sesión */}
+      <section className="banner">
+        <h2>¡Nuevo! Descubre los productos más vendidos.</h2>
+      </section>
+
       {mostrarLogin && (
         <div className="login-overlay">
           <div className="login-modal">
@@ -71,7 +129,6 @@ const App = () => {
                 <input 
                   type="email" 
                   id="email" 
-                  name="email" 
                   required 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -82,24 +139,54 @@ const App = () => {
                 <input 
                   type="password" 
                   id="password" 
-                  name="password" 
                   required 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)} 
                 />
               </div>
               {!esRegistrado && (
-                <div className="input-group">
-                  <label htmlFor="passwordConfirm">Confirmar Contraseña</label>
-                  <input 
-                    type="password" 
-                    id="passwordConfirm" 
-                    name="passwordConfirm" 
-                    required 
-                    value={passwordConfirm}
-                    onChange={(e) => setPasswordConfirm(e.target.value)} 
-                  />
-                </div>
+                <>
+                  <div className="input-group">
+                    <label htmlFor="nombreCompleto">Nombre completo</label>
+                    <input 
+                      type="text" 
+                      id="nombreCompleto" 
+                      required 
+                      value={nombreCompleto}
+                      onChange={(e) => setNombreCompleto(e.target.value)} 
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="telefono">Teléfono</label>
+                    <input 
+                      type="tel" 
+                      id="telefono" 
+                      required 
+                      value={telefono}
+                      onChange={(e) => setTelefono(e.target.value)} 
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="direccion">Dirección</label>
+                    <input 
+                      type="text" 
+                      id="direccion" 
+                      required 
+                      value={direccion}
+                      onChange={(e) => setDireccion(e.target.value)} 
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="passwordConfirm">Confirmar Contraseña</label>
+                    <input 
+                      type="password" 
+                      id="passwordConfirm" 
+                      required 
+                      value={passwordConfirm}
+                      onChange={(e) => setPasswordConfirm(e.target.value)} 
+                    />
+                  </div>
+                </>
               )}
               <button type="submit" className="btn">{esRegistrado ? 'Iniciar sesión' : 'Registrarse'}</button>
               <button type="button" className="btn" onClick={handleCerrarLogin}>Cerrar</button>
@@ -114,21 +201,20 @@ const App = () => {
         </div>
       )}
 
-      {/* Catálogo de productos */}
       <div className="catalogo">
         <aside className="sidebar">
-          <h2>Hombre - Ropa</h2>
+          <h2>Categorias</h2>
           <ul>
-            <li><a href="#">Parte superior</a></li>
-            <li><a href="#">Sudaderas y chaquetas</a></li>
-            <li><a href="#">Pantalones deportivos</a></li>
-            <li><a href="#">Calzado deportivo</a></li>
+            <li><a href="#">Ropa</a></li>
+            <li><a href="#">Calzado</a></li>
             <li><a href="#">Accesorios</a></li>
+            <li><a href="#">Novedades</a></li>
+            <li><a href="#">Ofertas</a></li>
           </ul>
         </aside>
         <div className="contenido-productos">
           <div className="opciones">
-            <button className="btn-filtro">Ocultar filtros</button>
+            <button className="btn-filtro">Mostrar filtros</button>
             <select className="select-ordenar">
               <option value="popularidad">Ordenar por popularidad</option>
               <option value="precio-bajo">Precio: de menor a mayor</option>
@@ -136,59 +222,16 @@ const App = () => {
             </select>
           </div>
           <div className="productos">
-            {/* Producto 1 */}
-            <div className="producto">
-              <img src="https://via.placeholder.com/250" alt="Producto 1" />
-              <h2>Jordan Flight Fleece</h2>
-              <p>Sudadera con capucha - Hombre</p>
-              <p className="precio">€52.49 <span className="descuento">€74.99</span></p>
-              <button className="btn">Añadir al carrito</button>
-            </div>
-
-            {/* Producto 2 */}
-            <div className="producto">
-              <img src="https://via.placeholder.com/250" alt="Producto 2" />
-              <h2>Nike Air Max 90</h2>
-              <p>Zapatillas deportivas - Hombre</p>
-              <p className="precio">€99.99 <span className="descuento">€120.00</span></p>
-              <button className="btn">Añadir al carrito</button>
-            </div>
-
-            {/* Producto 3 */}
-            <div className="producto">
-              <img src="https://via.placeholder.com/250" alt="Producto 3" />
-              <h2>Nike Dri-FIT</h2>
-              <p>Camiseta deportiva - Hombre</p>
-              <p className="precio">€29.99 <span className="descuento">€39.99</span></p>
-              <button className="btn">Añadir al carrito</button>
-            </div>
-
-            {/* Producto 4 */}
-            <div className="producto">
-              <img src="https://via.placeholder.com/250" alt="Producto 4" />
-              <h2>Nike Flex Stride</h2>
-              <p>Pantalón deportivo - Hombre</p>
-              <p className="precio">€44.99 <span className="descuento">€59.99</span></p>
-              <button className="btn">Añadir al carrito</button>
-            </div>
-
-            {/* Producto 5 */}
-            <div className="producto">
-              <img src="https://via.placeholder.com/250" alt="Producto 5" />
-              <h2>Nike Pro Training</h2>
-              <p>Pantalones cortos deportivos - Mujer</p>
-              <p className="precio">€34.99 <span className="descuento">€49.99</span></p>
-              <button className="btn">Añadir al carrito</button>
-            </div>
-
-            {/* Producto 6 */}
-            <div className="producto">
-              <img src="https://via.placeholder.com/250" alt="Producto 6" />
-              <h2>Air Jordan 1</h2>
-              <p>Zapatillas clásicas - Hombre</p>
-              <p className="precio">€149.99 <span className="descuento">€179.99</span></p>
-              <button className="btn">Añadir al carrito</button>
-            </div>
+            {/** Productos */}
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <div className="producto" key={index}>
+                <img src={`https://via.placeholder.com/250`} alt={`Producto ${index}`} />
+                <h2>{`Producto ${index}`}</h2>
+                <p>{`Descripción del producto ${index}`}</p>
+                <p className="precio">€49.99 <span className="descuento">€74.99</span></p>
+                <button className="btn">Añadir al carrito</button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
